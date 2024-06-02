@@ -7,12 +7,21 @@ start:
     mov ds, ax
     mov es, ax
     mov ss, ax
-    mov sp, 0x7C00 ; Set stack pointer
+    mov sp, 0x7C00  ; Set stack pointer
 
     mov si, hello_msg
     call print_string
 
-    hlt             ; Halt CPU
+    ; Load the kernel
+    mov bx, 0x1000     ; Load address
+    mov ah, 0x02       ; Read function
+    mov al, 3          ; Sectors to read
+    mov ch, 0          ; Cylinder
+    mov dh, 0          ; Head
+    mov cl, 2          ; Sector (start from sector 2, as 1 is the boot sector)
+    int 0x13
+
+    jmp 0x1000         ; Jump to kernel
 
 print_string:
     mov ah, 0x0E    ; BIOS teletype function
@@ -25,7 +34,7 @@ print_string:
 .done:
     ret
 
-hello_msg db 'Hello, TaifaOS!', 0
+hello_msg db 'Hello, TaifaOS Bootloader!', 0
 
 times 510-($-$$) db 0
 dw 0xAA55         ; Boot signature

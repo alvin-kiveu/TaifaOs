@@ -1,5 +1,5 @@
 void kernel_main() {
-    const char *str = "Hello, TaifaOS!";
+    const char *str = "Welcome to TaifaOS";
     char *video_memory = (char *) 0xB8000;
 
     for (int i = 0; str[i] != '\0'; ++i) {
