@@ -12,37 +12,51 @@ TaifaOS is a simple operating system that is written in C and Assembly. It is a 
 
 To build the operating system, you will need to have the following tools installed on your system:
 
-- GCC
+- QEMU : This is an open-source machine emulator and virtualizer that is used to run the operating system.
 
-- NASM
+- NASM : This is an assembler that is used to assemble the assembly code.
 
-- QEMU
+- GCC : This is a compiler that is used to compile the C code.
 
-- GNU Make
-
-- GNU Binutils
 
 
 To build the operating system, you will need to run the following command:
 
-```bash
 
-make build
+File structure:
+```bash
+TaifaOS/
+│
+├── boot/
+│   └── boot.asm
+│
+├── kernel/
+│   └── kernel.c
+│
+├── linker.ld
+│
+└── Makefile
 
 ```
 
-This will build the operating system and create a bootable ISO image that you can use to run the operating system.
 
-
-## Running the Operating System
-
-To run the operating system, you will need to run the following command:
-
+How to build a TaifaOS image on Linux:
 ```bash
-
-make run
-
+$ make
 ```
+
+How to build a TaifaOS image on Windows:
+```bash
+dd if=/dev/zero of=taifaos.img bs=512 count=2880
+```
+
+How to run a TaifaOS image on Windows using QEMU:
+```bash
+qemu-system-i386 -drive file=taifaos.img,format=raw
+```
+
+
+
 
 
 This will run the operating system in QEMU.
