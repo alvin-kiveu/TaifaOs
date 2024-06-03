@@ -1,6 +1,11 @@
 # TaifaOS
 
+<p align="center">
+  <img src="icon/icon.png" alt="TaifaOS Icon" width="200" height="200">
+</p>
+
 TaifaOS is a simple operating system that is written in C and Assembly. It is a 32-bit operating system that is designed to run on x86 architecture. The operating system is still in development and is not yet ready for use. The operating system is designed to be a simple operating system that can be used to learn about operating system development.
+
 
 
 ## Building the Operating System
