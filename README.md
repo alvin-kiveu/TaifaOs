@@ -55,8 +55,26 @@ How to run a TaifaOS image on Windows using QEMU:
 qemu-system-i386 -drive file=taifaos.img,format=raw
 ```
 
+How to generate a TaifaOS iso image on Linux:
+```bash
+$ make iso
+```
 
+How to run a TaifaOS iso image on Linux using QEMU:
+```bash
+dd if=/dev/zero of=taifaos.iso bs=512 count=2880
+mkfs.vfat taifaos.iso
+mkdir -p /mnt/iso
+mount -o loop taifaos.iso /mnt/iso
+cp taifaos.img /mnt/iso
+umount /mnt/iso
+qemu-system-i386 -cdrom taifaos.iso
+```
 
+How to run a TaifaOS image on Linux using QEMU:
+```bash
+$ qemu-system-i386 -drive file=taifaos.img,format=raw
+```
 
 
 This will run the operating system in QEMU.
